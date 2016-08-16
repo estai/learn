@@ -6,11 +6,11 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: ru
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -34,8 +34,7 @@ framework:
 
 # Twig Configuration
 twig:
-    debug:            "%kernel.debug%"
-    strict_variables: "%kernel.debug%"
+    form_themes: ['bootstrap_3_layout.html.twig']
 
 # Doctrine Configuration
 doctrine:
@@ -65,7 +64,10 @@ swiftmailer:
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
-    spool:     { type: memory }
+    #port:      "%mailer_port%"
+    #encryption: "%mailer_encryption%"
+   # auth_mode: "%mailer_auth_mode%"
+
 
 fos_user:
     db_driver: orm
@@ -73,3 +75,39 @@ fos_user:
     user_class: CommonBundle\Entity\UserAdmin\UserAdmin
     service:
         mailer: fos_user.mailer.default
+
+
+
+pedro_teixeira_grid:
+    defaults:
+        date:
+            use_datepicker:     true
+            date_format:        'dd/MM/yy'
+            date_time_format:   'dd/MM/yy HH:mm:ss'
+        pagination:
+            limit:              20
+        export:
+            enabled:            true
+            path:               '/tmp/'
+
+gos_web_socket:
+    client:
+       session_handler: ~
+       firewall: api
+       storage:
+           driver: "@gos_web_socket.server.in_memory.client_storage.driver"
+           decorator: ~
+
+    shared_config: true
+    assetic: true
+    server:
+        port: 8080        #The port the socket server will listen on
+        host: 127.0.0.1   #The host ip to bind to
+
+assetic:
+    debug:          false #'%kernel.debug%'
+    use_controller: false # '%use_assetic_controller%' # '%kernel.debug%'
+    filters:
+        cssrewrite: ~
+    bundles:
+        - AppBundle

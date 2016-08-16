@@ -1,0 +1,51 @@
+body {
+    margin-top: 70px;
+}
+
+#panelChat{
+  height:30em;
+  max-height:30em;
+}
+
+#panelChat .me{
+  text-align:right;
+}
+
+#panelChat .alert{
+    padding:8px;
+    margin-bottom:5px;
+}
+
+.panel{
+  margin-bottom:10px;
+}
+
+.messageText{
+    font-size: small;
+    color: #434b52;
+    border: 1px solid lightgrey;
+}
+
+.avatarChat{
+    width: 60px;
+    display:inline-block;
+    vertical-align:middle;
+}
+
+.userChat{
+    width: 80%;
+    display:inline-block;
+    vertical-align:middle;
+}
+
+.infoMessage{
+    font-size: small;
+    color: #7c838a;
+}
+
+.replyButton{
+    width: 150px;
+    display:inline-block;
+    vertical-align:bottom;
+    float: right;
+}

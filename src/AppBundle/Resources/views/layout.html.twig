@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Chat</title>
+
+ <!-- CSS -->
+ {% stylesheets
+ '@AppBundle/Resources/public/css/lib/*'
+ '@AppBundle/Resources/public/css/main.css' %}
+ <link rel="stylesheet" href="{{ asset_url }}"/>
+ {% endstylesheets %}
+
+</head>
+
+<body style="background-color: #d4d4d4;">
+
+
+<div class="container" style="padding-top: 50px;">
+
+ {% block content %}
+
+ {% endblock %}
+
+</div>
+<!-- /.container -->
+
+<!-- JavaScript -->
+<script type="text/javascript">
+ var _WS_URI = "ws://{{ ws_host }}:{{ ws_port }}";
+</script>
+
+{% javascripts
+'@AppBundle/Resources/public/js/lib/*'
+'@AppBundle/Resources/public/js/main.js'
+'@AppBundle/Resources/public/js/ws.js'
+'@AppBundle/Resources/public/js/vendor/autobahn.min.js'
+%}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+</body>
+
+</html>

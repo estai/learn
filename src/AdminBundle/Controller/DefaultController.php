@@ -12,6 +12,20 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('AdminBundle:Default:index.html.twig');
+        /** @var \Doctrine\ORM\EntityRepository $repository */
+        $repository = $this->getDoctrine()->getRepository('CommonBundle:UserAdmin');
+        $queryBuilder = $repository->createQueryBuilder('r');
+
+
+        $grid = $this->get('pedroteixeira.grid')->createGrid('\AdminBundle\Grid\AdminUserGrid');
+        $grid->setQueryBuilder($queryBuilder);
+
+        if ($grid->isResponseAnswer()) {
+            return $grid->render();
+        }
+
+        return $this->render('AdminBundle:Default:index.html.twig',array(
+            'grid'   => $grid->render()
+        ));
     }
 }
