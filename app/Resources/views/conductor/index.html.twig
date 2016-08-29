@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Conductor list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Salt</th>
+                <th>Password</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for conductor in conductors %}
+            <tr>
+                <td><a href="{{ path('conductor_show', { 'id': conductor.id }) }}">{{ conductor.id }}</a></td>
+                <td>{{ conductor.username }}</td>
+                <td>{{ conductor.salt }}</td>
+                <td>{{ conductor.password }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('conductor_show', { 'id': conductor.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('conductor_edit', { 'id': conductor.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('conductor_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

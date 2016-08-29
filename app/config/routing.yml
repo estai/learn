@@ -1,3 +1,7 @@
+app_conductor:
+    resource: "@AppBundle/Controller/ConductorController.php"
+    type:     annotation
+
 common:
     resource: "@CommonBundle/Controller/"
     type:     annotation

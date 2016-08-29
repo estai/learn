@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Conductor</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ conductor.id }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ conductor.username }}</td>
+            </tr>
+            <tr>
+                <th>Salt</th>
+                <td>{{ conductor.salt }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ conductor.password }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('conductor_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('conductor_edit', { 'id': conductor.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
